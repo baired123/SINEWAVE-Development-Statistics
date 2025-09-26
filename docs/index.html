@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SINEWAVE Development - Server Statistics</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <div class="header-content">
+          <h1 class="title">SINEWAVE Development Statistics</h1>
+          <p class="subtitle">Live Discord server metrics updated every 5 minutes</p>
+          <div class="last-updated" id="lastUpdated">Last updated: Loading...</div>
+        </div>
+      </header>
+      <div class="stats-grid">
+        <!-- Current Stats Cards -->
+        <div class="stat-card">
+          <div class="stat-icon">👥</div>
+          <div class="stat-content">
+            <h3>Total Members</h3>
+            <div class="stat-value" id="totalMembers">-</div>
+            <div class="stat-change" id="totalMembersChange"></div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">●</div>
+          <div class="stat-content">
+            <h3>Online Members</h3>
+            <div class="stat-value" id="onlineMembers">-</div>
+            <div class="stat-change" id="onlineMembersChange"></div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">✉</div>
+          <div class="stat-content">
+            <h3>Messages/Hour</h3>
+            <div class="stat-value" id="messagesPerHour">-</div>
+            <div class="stat-change" id="messagesChange"></div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">📈</div>
+          <div class="stat-content">
+            <h3>Activity Level</h3>
+            <div class="stat-value" id="activityLevel">-</div>
+            <div class="stat-change" id="activityTrend"></div>
+          </div>
+        </div>
+      </div>
+      <!-- Charts Section -->
+      <div class="charts-grid">
+        <div class="chart-container">
+          <h3>Member Activity Over Time</h3>
+          <canvas id="membersChart"></canvas>
+        </div>
+        <div class="chart-container">
+          <h3>Message Activity</h3>
+          <canvas id="messagesChart"></canvas>
+        </div>
+        <div class="chart-container full-width">
+          <h3>Online Ratio & Activity Heatmap</h3>
+          <canvas id="activityChart"></canvas>
+        </div>
+      </div>
+      <!-- Data Table -->
+      <div class="data-section">
+        <h3>Recent Data Points</h3>
+        <div class="table-container">
+          <table id="statsTable">
+            <thead>
+              <tr>
+                <th>Timestamp</th>
+                <th>Total Members</th>
+                <th>Online Members</th>
+                <th>Messages/Hour</th>
+                <th>Online Ratio</th>
+              </tr>
+            </thead>
+            <tbody id="statsTableBody">
+              <!-- Data will be populated by JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <footer class="footer">
+        <p>Data updates every 5 minutes • Powered by SINEWAVE Development</p>
+      </footer>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
