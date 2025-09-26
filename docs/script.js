@@ -94,8 +94,8 @@ class StatsDashboard {
         const messageScore = Math.min(messagesPerHour / 20, 1); // Normalize message count
         const activityScore = (onlineRatio * 0.7 + messageScore * 0.3) * 100;
 
-        if (activityScore >= 70) return 'High';
-        if (activityScore >= 40) return 'Medium';
+        if (activityScore >= 50) return 'High';
+        if (activityScore >= 25) return 'Medium';
         return 'Low';
     }
 
