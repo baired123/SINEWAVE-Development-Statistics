@@ -1,6 +1,7 @@
 class StatsDashboard {
     constructor() {
         this.statsData = [];
+        this.hourlyData = [];
         this.dataUrl = 'https://raw.githubusercontent.com/ThatSINEWAVE/SINEWAVE-Development-Statistics/refs/heads/main/statistics/server_stats.json';
         this.charts = {};
         this.updateInterval = 300000; // 5 minutes
@@ -10,6 +11,7 @@ class StatsDashboard {
 
     async init() {
         await this.loadData();
+        this.processHourlyData();
         this.initCharts();
         this.updateDashboard();
         this.startAutoRefresh();
@@ -33,6 +35,52 @@ class StatsDashboard {
             // Fallback to sample data if fetch fails
             this.statsData = this.getSampleData();
         }
+    }
+
+    processHourlyData() {
+        if (this.statsData.length === 0) return;
+
+        // Group data by hour
+        const hourlyGroups = {};
+
+        this.statsData.forEach(stat => {
+            const date = new Date(stat.timestamp);
+            const hourKey = new Date(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours()).getTime();
+
+            if (!hourlyGroups[hourKey]) {
+                hourlyGroups[hourKey] = {
+                    timestamps: [],
+                    total_members: [],
+                    online_members: [],
+                    messages_per_hour: []
+                };
+            }
+
+            hourlyGroups[hourKey].timestamps.push(stat.timestamp);
+            hourlyGroups[hourKey].total_members.push(stat.total_members);
+            hourlyGroups[hourKey].online_members.push(stat.online_members);
+            hourlyGroups[hourKey].messages_per_hour.push(stat.messages_per_hour);
+        });
+
+        // Calculate hourly averages
+        this.hourlyData = Object.keys(hourlyGroups).map(hourKey => {
+            const group = hourlyGroups[hourKey];
+            const avgTotalMembers = Math.round(group.total_members.reduce((a, b) => a + b, 0) / group.total_members.length);
+            const avgOnlineMembers = Math.round(group.online_members.reduce((a, b) => a + b, 0) / group.online_members.length);
+            const totalMessages = group.messages_per_hour.reduce((a, b) => a + b, 0);
+
+            // Use the first timestamp of the hour as the representative timestamp
+            const representativeTimestamp = group.timestamps[0];
+
+            return {
+                total_members: avgTotalMembers,
+                online_members: avgOnlineMembers,
+                messages_per_hour: totalMessages, // Sum of messages per hour across all 5-min intervals
+                timestamp: representativeTimestamp
+            };
+        }).sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp)); // Sort chronologically
+
+        console.log(`Processed ${this.hourlyData.length} hourly data points from ${this.statsData.length} raw data points`);
     }
 
     getSampleData() {
@@ -87,6 +135,17 @@ class StatsDashboard {
 
     formatTimestamp(timestamp) {
         return new Date(timestamp).toLocaleString();
+    }
+
+    formatHourlyTimestamp(timestamp) {
+        const date = new Date(timestamp);
+        return date.toLocaleTimeString([], {
+            hour: '2-digit',
+            minute: '2-digit'
+        }) + ' ' + date.toLocaleDateString([], {
+            month: 'short',
+            day: 'numeric'
+        });
     }
 
     calculateActivityLevel(onlineMembers, totalMembers, messagesPerHour) {
@@ -235,7 +294,12 @@ class StatsDashboard {
                         bodyColor: '#fff',
                         borderColor: '#4361ee',
                         borderWidth: 1,
-                        cornerRadius: 6
+                        cornerRadius: 6,
+                        callbacks: {
+                            title: (context) => {
+                                return `Hour: ${this.formatHourlyTimestamp(this.hourlyData[context[0].dataIndex].timestamp)}`;
+                            }
+                        }
                     }
                 },
                 scales: {
@@ -245,6 +309,12 @@ class StatsDashboard {
                             drawBorder: false
                         },
                         ticks: {
+                            color: '#a0a0a0',
+                            maxTicksLimit: 6
+                        },
+                        title: {
+                            display: true,
+                            text: 'Time (Hourly)',
                             color: '#a0a0a0'
                         }
                     },
@@ -254,6 +324,11 @@ class StatsDashboard {
                             drawBorder: false
                         },
                         ticks: {
+                            color: '#a0a0a0'
+                        },
+                        title: {
+                            display: true,
+                            text: 'Members',
                             color: '#a0a0a0'
                         }
                     }
@@ -307,7 +382,12 @@ class StatsDashboard {
                         bodyColor: '#fff',
                         borderColor: '#4361ee',
                         borderWidth: 1,
-                        cornerRadius: 6
+                        cornerRadius: 6,
+                        callbacks: {
+                            title: (context) => {
+                                return `Hour: ${this.formatHourlyTimestamp(this.hourlyData[context[0].dataIndex].timestamp)}`;
+                            }
+                        }
                     }
                 },
                 scales: {
@@ -317,6 +397,12 @@ class StatsDashboard {
                             drawBorder: false
                         },
                         ticks: {
+                            color: '#a0a0a0',
+                            maxTicksLimit: 6
+                        },
+                        title: {
+                            display: true,
+                            text: 'Time (Hourly)',
                             color: '#a0a0a0'
                         }
                     },
@@ -326,6 +412,11 @@ class StatsDashboard {
                             drawBorder: false
                         },
                         ticks: {
+                            color: '#a0a0a0'
+                        },
+                        title: {
+                            display: true,
+                            text: 'Messages',
                             color: '#a0a0a0'
                         }
                     }
@@ -401,7 +492,12 @@ class StatsDashboard {
                         bodyColor: '#fff',
                         borderColor: '#4361ee',
                         borderWidth: 1,
-                        cornerRadius: 6
+                        cornerRadius: 6,
+                        callbacks: {
+                            title: (context) => {
+                                return `Hour: ${this.formatHourlyTimestamp(this.hourlyData[context[0].dataIndex].timestamp)}`;
+                            }
+                        }
                     }
                 },
                 scales: {
@@ -411,6 +507,12 @@ class StatsDashboard {
                             drawBorder: false
                         },
                         ticks: {
+                            color: '#a0a0a0',
+                            maxTicksLimit: 6
+                        },
+                        title: {
+                            display: true,
+                            text: 'Time (Hourly)',
                             color: '#a0a0a0'
                         }
                     },
@@ -459,20 +561,19 @@ class StatsDashboard {
     }
 
     updateCharts() {
-        if (this.statsData.length === 0) return;
+        if (this.hourlyData.length === 0) return;
 
-        const labels = this.statsData.map(stat => {
+        const labels = this.hourlyData.map(stat => {
             const date = new Date(stat.timestamp);
             return date.toLocaleTimeString([], {
-                hour: '2-digit',
-                minute: '2-digit'
+                hour: '2-digit'
             });
         });
 
-        const totalMembers = this.statsData.map(stat => stat.total_members);
-        const onlineMembers = this.statsData.map(stat => stat.online_members);
-        const messages = this.statsData.map(stat => stat.messages_per_hour);
-        const onlineRatios = this.statsData.map(stat =>
+        const totalMembers = this.hourlyData.map(stat => stat.total_members);
+        const onlineMembers = this.hourlyData.map(stat => stat.online_members);
+        const messages = this.hourlyData.map(stat => stat.messages_per_hour);
+        const onlineRatios = this.hourlyData.map(stat =>
             ((stat.online_members / stat.total_members) * 100).toFixed(1)
         );
 
@@ -504,7 +605,7 @@ class StatsDashboard {
         const tbody = document.getElementById('statsTableBody');
         if (!tbody) return;
 
-        // Show last 10 entries
+        // Show last 10 entries from the raw data (5-minute intervals)
         const recentStats = this.statsData.slice(-10).reverse();
 
         tbody.innerHTML = recentStats.map(stat => `
@@ -519,6 +620,7 @@ class StatsDashboard {
     }
 
     updateDashboard() {
+        this.processHourlyData();
         this.updateCurrentStats();
         this.updateCharts();
         this.updateDataTable();
