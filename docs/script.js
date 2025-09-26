@@ -116,6 +116,38 @@ class StatsDashboard {
         return this.statsData[this.statsData.length - 2];
     }
 
+    calculateAverageMessagesPerHour() {
+        if (this.statsData.length === 0) return 0;
+
+        const hourlyMessages = {};
+
+        this.statsData.forEach(stat => {
+            const date = new Date(stat.timestamp);
+            const hourKey = new Date(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours()).getTime();
+
+            if (!hourlyMessages[hourKey]) {
+                hourlyMessages[hourKey] = {
+                    totalMessages: 0,
+                    dataPoints: 0
+                };
+            }
+
+            hourlyMessages[hourKey].totalMessages += stat.messages_per_hour;
+            hourlyMessages[hourKey].dataPoints++;
+        });
+
+        // Calculate average messages per hour across all hours
+        const hourlyAverages = Object.values(hourlyMessages).map(hour => {
+            const normalizedMessages = (hour.totalMessages / hour.dataPoints) * 12;
+            return normalizedMessages;
+        });
+
+        if (hourlyAverages.length === 0) return 0;
+
+        const overallAverage = hourlyAverages.reduce((sum, avg) => sum + avg, 0) / hourlyAverages.length;
+        return Math.round(overallAverage);
+    }
+
     calculateChange(current, previous) {
         if (!previous || previous === 0) return {
             change: 0,
@@ -153,8 +185,8 @@ class StatsDashboard {
         const messageScore = Math.min(messagesPerHour / 20, 1); // Normalize message count
         const activityScore = (onlineRatio * 0.7 + messageScore * 0.3) * 100;
 
-        if (activityScore >= 50) return 'High';
-        if (activityScore >= 25) return 'Medium';
+        if (activityScore >= 75) return 'High';
+        if (activityScore >= 50) return 'Medium';
         return 'Low';
     }
 
@@ -186,22 +218,19 @@ class StatsDashboard {
             this.updateChangeElement(changeEl, change, 'online');
         }
 
-        // Update messages per hour
+        const averageMessagesPerHour = this.calculateAverageMessagesPerHour();
         const messagesEl = document.getElementById('messagesPerHour');
-        messagesEl.textContent = this.formatNumber(current.messages_per_hour);
+        messagesEl.textContent = this.formatNumber(averageMessagesPerHour);
         messagesEl.classList.add('pulse');
 
-        if (previous) {
-            const change = this.calculateChange(current.messages_per_hour, previous.messages_per_hour);
-            const changeEl = document.getElementById('messagesChange');
-            this.updateChangeElement(changeEl, change, 'messages');
-        }
+        const changeEl = document.getElementById('messagesChange');
+        changeEl.textContent = '→ 0 (0.0%)';
+        changeEl.className = 'stat-change neutral';
 
-        // Update activity level
         const activityLevel = this.calculateActivityLevel(
             current.online_members,
             current.total_members,
-            current.messages_per_hour
+            averageMessagesPerHour
         );
         const activityEl = document.getElementById('activityLevel');
         activityEl.textContent = activityLevel;
