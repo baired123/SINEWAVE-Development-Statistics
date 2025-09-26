@@ -19,6 +19,7 @@ class StatsBot(discord.Client):
         intents.members = True
         intents.presences = True
         intents.message_content = True
+        intents.messages = True
         super().__init__(intents=intents)
 
         self.message_count = 0
@@ -43,8 +44,71 @@ class StatsBot(discord.Client):
         # Clone repository if it doesn't exist
         await self.setup_repository()
 
+        # Count recent messages from all channels
+        await self.count_recent_messages()
+
         # Start the stats collection loop
         self.stats_loop.start()
+
+    async def count_recent_messages(self):
+        print("Counting recent messages from current hour...")
+
+        if not self.guilds:
+            print("Bot is not in any guilds")
+            return
+
+        guild = self.guilds[0]  # Use the first guild
+
+        # Use timezone-aware datetime for comparison with Discord timestamps
+        now = datetime.now().astimezone()  # Make it timezone-aware
+        current_hour = now.replace(minute=0, second=0, microsecond=0)
+        next_hour = current_hour + timedelta(hours=1)
+
+        message_count = 0
+        channels_processed = 0
+        channels_with_messages = 0
+
+        # Iterate through all text channels
+        for channel in guild.text_channels:
+            try:
+                # Check if we have permission to read message history
+                if channel.permissions_for(guild.me).read_message_history:
+                    print(f"Checking messages in #{channel.name}...")
+
+                    # Fetch recent messages (last 100 messages)
+                    try:
+                        channel_message_count = 0
+                        async for message in channel.history(
+                            limit=100, after=current_hour - timedelta(hours=1)
+                        ):
+                            # Only count non-bot messages from the current hour
+                            if (
+                                not message.author.bot
+                                and message.created_at >= current_hour
+                                and message.created_at < next_hour
+                            ):
+                                message_count += 1
+                                channel_message_count += 1
+
+                        if channel_message_count > 0:
+                            channels_with_messages += 1
+                            print(
+                                f"Found {channel_message_count} messages in #{channel.name}"
+                            )
+
+                        channels_processed += 1
+                    except discord.Forbidden:
+                        print(f"No permission to read history in #{channel.name}")
+                    except Exception as e:
+                        print(f"Error reading history in #{channel.name}: {e}")
+            except Exception as e:
+                print(f"Error processing channel #{channel.name}: {e}")
+
+        # Update the message count
+        self.messages_per_hour = message_count
+        print(
+            f"Found {message_count} messages from the current hour across {channels_with_messages} channels (processed {channels_processed} channels total)"
+        )
 
     async def on_message(self, message):
         # Ignore bot messages
@@ -55,6 +119,9 @@ class StatsBot(discord.Client):
 
         # Reset counter if hour changed
         if current_hour != self.last_hour:
+            print(
+                f"Hour changed from {self.last_hour} to {current_hour}, resetting message counter"
+            )
             self.messages_per_hour = 0
             self.last_hour = current_hour
 
