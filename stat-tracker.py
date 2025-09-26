@@ -119,9 +119,9 @@ class StatsBot(discord.Client):
         # Append new stats
         data["stats"].append(stats)
 
-        # Keep only last 288 entries (24 hours of 5-minute intervals)
-        if len(data["stats"]) > 288:
-            data["stats"] = data["stats"][-288:]
+        # Keep only last 2016 entries (7 days of 5-minute intervals)
+        if len(data["stats"]) > 2016:
+            data["stats"] = data["stats"][-2016:]
 
         # Save to file
         with open(stats_file, 'w') as f:
