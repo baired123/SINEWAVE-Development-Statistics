@@ -22,12 +22,12 @@ class StatsBot(discord.Client):
         super().__init__(intents=intents)
 
         self.message_count = 0
-        self.repo_path = os.getenv('REPO_PATH', './stats-repo')
-        self.statistics_folder = os.path.join(self.repo_path, 'statistics')
-        self.git_repo_url = os.getenv('GIT_REPO_URL')
-        self.git_username = os.getenv('GIT_USERNAME')
-        self.git_email = os.getenv('GIT_EMAIL')
-        self.github_token = os.getenv('GITHUB_TOKEN')
+        self.repo_path = os.getenv("REPO_PATH", "./stats-repo")
+        self.statistics_folder = os.path.join(self.repo_path, "statistics")
+        self.git_repo_url = os.getenv("GIT_REPO_URL")
+        self.git_username = os.getenv("GIT_USERNAME")
+        self.git_email = os.getenv("GIT_EMAIL")
+        self.github_token = os.getenv("GITHUB_TOKEN")
 
         # Initialize message tracking
         self.messages_per_hour = 0
@@ -37,8 +37,8 @@ class StatsBot(discord.Client):
         self.repo_initialized = False
 
     async def on_ready(self):
-        print(f'Logged in as {self.user.name} ({self.user.id})')
-        print('------')
+        print(f"Logged in as {self.user.name} ({self.user.id})")
+        print("------")
 
         # Clone repository if it doesn't exist
         await self.setup_repository()
@@ -61,7 +61,7 @@ class StatsBot(discord.Client):
         self.messages_per_hour += 1
 
     async def setup_repository(self):
-        repo_exists = os.path.exists(os.path.join(self.repo_path, '.git'))
+        repo_exists = os.path.exists(os.path.join(self.repo_path, ".git"))
 
         if not repo_exists:
             print("Repository not found. Setting up...")
@@ -70,11 +70,13 @@ class StatsBot(discord.Client):
             if os.path.exists(self.repo_path):
                 # Check if directory is empty
                 if os.listdir(self.repo_path):
-                    print("Repo path exists but is not empty. Creating new directory...")
+                    print(
+                        "Repo path exists but is not empty. Creating new directory..."
+                    )
                     # Create a new directory with a timestamp to avoid conflicts
                     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
                     self.repo_path = f"{self.repo_path}_{timestamp}"
-                    self.statistics_folder = os.path.join(self.repo_path, 'statistics')
+                    self.statistics_folder = os.path.join(self.repo_path, "statistics")
                     os.makedirs(self.repo_path, exist_ok=True)
                 else:
                     # Directory exists but is empty, we can use it
@@ -90,15 +92,17 @@ class StatsBot(discord.Client):
 
                     # Modify URL to include token for authentication
                     repo_url = self.git_repo_url.replace(
-                        'https://',
-                        f'https://{self.github_token}@'
+                        "https://", f"https://{self.github_token}@"
                     )
 
                     # Use async subprocess
                     result = await asyncio.create_subprocess_exec(
-                        'git', 'clone', repo_url, self.repo_path,
+                        "git",
+                        "clone",
+                        repo_url,
+                        self.repo_path,
                         stdout=asyncio.subprocess.PIPE,
-                        stderr=asyncio.subprocess.PIPE
+                        stderr=asyncio.subprocess.PIPE,
                     )
 
                     stdout, stderr = await result.communicate()
@@ -123,17 +127,17 @@ class StatsBot(discord.Client):
 
         # Configure git user if we have credentials
         if self.git_username and self.git_email:
-            await self.run_git_command(['config', 'user.name', self.git_username])
-            await self.run_git_command(['config', 'user.email', self.git_email])
+            await self.run_git_command(["config", "user.name", self.git_username])
+            await self.run_git_command(["config", "user.email", self.git_email])
 
         # Configure git to not prompt for passwords
-        await self.run_git_command(['config', 'core.askPass', ''])
+        await self.run_git_command(["config", "core.askPass", ""])
 
         # Store credentials in file to avoid prompts
         if self.github_token and self.git_repo_url:
             credentials_content = f"https://{self.github_token}@github.com\n"
-            credentials_file = os.path.join(self.repo_path, '.git-credentials')
-            with open(credentials_file, 'w') as f:
+            credentials_file = os.path.join(self.repo_path, ".git-credentials")
+            with open(credentials_file, "w") as f:
                 f.write(credentials_content)
 
         # Create statistics folder if it doesn't exist
@@ -147,16 +151,21 @@ class StatsBot(discord.Client):
         global process
         try:
             process = await asyncio.create_subprocess_exec(
-                'git', *args,
+                "git",
+                *args,
                 cwd=self.repo_path,
                 stdout=asyncio.subprocess.PIPE,
-                stderr=asyncio.subprocess.PIPE
+                stderr=asyncio.subprocess.PIPE,
             )
 
-            stdout, stderr = await asyncio.wait_for(process.communicate(), timeout=timeout)
+            stdout, stderr = await asyncio.wait_for(
+                process.communicate(), timeout=timeout
+            )
 
             if check and process.returncode != 0:
-                raise subprocess.CalledProcessError(process.returncode, args, stdout.decode(), stderr.decode())
+                raise subprocess.CalledProcessError(
+                    process.returncode, args, stdout.decode(), stderr.decode()
+                )
 
             return stdout.decode(), stderr.decode()
         except asyncio.TimeoutError:
@@ -173,93 +182,116 @@ class StatsBot(discord.Client):
             print("Initializing new git repository...")
 
             # Set the default branch to main
-            subprocess.run(['git', 'init', '-b', 'main'], cwd=self.repo_path, check=True)
+            subprocess.run(
+                ["git", "init", "-b", "main"], cwd=self.repo_path, check=True
+            )
 
             # Configure git user BEFORE committing
             if self.git_username and self.git_email:
-                subprocess.run([
-                    'git', 'config', 'user.name', self.git_username
-                ], cwd=self.repo_path, check=True)
+                subprocess.run(
+                    ["git", "config", "user.name", self.git_username],
+                    cwd=self.repo_path,
+                    check=True,
+                )
 
-                subprocess.run([
-                    'git', 'config', 'user.email', self.git_email
-                ], cwd=self.repo_path, check=True)
+                subprocess.run(
+                    ["git", "config", "user.email", self.git_email],
+                    cwd=self.repo_path,
+                    check=True,
+                )
             else:
                 # Set fallback credentials to avoid commit errors
-                subprocess.run([
-                    'git', 'config', 'user.name', 'StatsBot'
-                ], cwd=self.repo_path, check=True)
-                subprocess.run([
-                    'git', 'config', 'user.email', 'statsbot@localhost'
-                ], cwd=self.repo_path, check=True)
+                subprocess.run(
+                    ["git", "config", "user.name", "StatsBot"],
+                    cwd=self.repo_path,
+                    check=True,
+                )
+                subprocess.run(
+                    ["git", "config", "user.email", "statsbot@localhost"],
+                    cwd=self.repo_path,
+                    check=True,
+                )
 
             # Configure to avoid password prompts
-            subprocess.run(['git', 'config', 'core.askPass', ''], cwd=self.repo_path, check=True)
+            subprocess.run(
+                ["git", "config", "core.askPass", ""], cwd=self.repo_path, check=True
+            )
 
             # If we have a remote URL, set it up
             if self.git_repo_url:
                 # Modify URL to include token for authentication
-                repo_url = self.git_repo_url.replace(
-                    'https://',
-                    f'https://{self.github_token}@'
-                ) if self.github_token else self.git_repo_url
+                repo_url = (
+                    self.git_repo_url.replace(
+                        "https://", f"https://{self.github_token}@"
+                    )
+                    if self.github_token
+                    else self.git_repo_url
+                )
 
-                subprocess.run([
-                    'git', 'remote', 'add', 'origin', repo_url
-                ], cwd=self.repo_path, check=True)
+                subprocess.run(
+                    ["git", "remote", "add", "origin", repo_url],
+                    cwd=self.repo_path,
+                    check=True,
+                )
 
                 # Store credentials to avoid prompts
                 if self.github_token:
                     credentials_content = f"https://{self.github_token}@github.com\n"
-                    credentials_file = os.path.join(self.repo_path, '.git-credentials')
-                    with open(credentials_file, 'w') as f:
+                    credentials_file = os.path.join(self.repo_path, ".git-credentials")
+                    with open(credentials_file, "w") as f:
                         f.write(credentials_content)
 
             # Create README or initial file to commit
-            readme_path = os.path.join(self.repo_path, 'README.md')
+            readme_path = os.path.join(self.repo_path, "README.md")
             if not os.path.exists(readme_path):
-                with open(readme_path, 'w') as f:
-                    f.write("# Server Statistics\n\nThis repository contains automated server statistics.\n")
+                with open(readme_path, "w") as f:
+                    f.write(
+                        "# Server Statistics\n\nThis repository contains automated server statistics.\n"
+                    )
 
             # Create statistics folder
             os.makedirs(self.statistics_folder, exist_ok=True)
 
             # Create initial stats file
-            stats_file = os.path.join(self.statistics_folder, 'server_stats.json')
+            stats_file = os.path.join(self.statistics_folder, "server_stats.json")
             if not os.path.exists(stats_file):
-                with open(stats_file, 'w') as f:
+                with open(stats_file, "w") as f:
                     json.dump({"stats": []}, f, indent=2)
 
             # Add and commit initial files
-            subprocess.run(['git', 'add', '.'], cwd=self.repo_path, check=True)
-            subprocess.run([
-                'git', 'commit', '-m', 'Initial commit - stats tracking'
-            ], cwd=self.repo_path, check=True)
+            subprocess.run(["git", "add", "."], cwd=self.repo_path, check=True)
+            subprocess.run(
+                ["git", "commit", "-m", "Initial commit - stats tracking"],
+                cwd=self.repo_path,
+                check=True,
+            )
 
             self.repo_initialized = True
             print("Git repository initialized successfully with 'main' branch")
 
         except subprocess.CalledProcessError as e:
             print(f"Error initializing git repository: {e}")
-            if hasattr(e, 'stderr') and e.stderr:
+            if hasattr(e, "stderr") and e.stderr:
                 print(f"Error details: {e.stderr}")
             self.repo_initialized = False
 
     def get_server_stats(self, guild):
         total_members = guild.member_count
-        online_members = sum(1 for member in guild.members
-                             if member.status != discord.Status.offline and
-                             not member.bot)
+        online_members = sum(
+            1
+            for member in guild.members
+            if member.status != discord.Status.offline and not member.bot
+        )
 
         return {
             "total_members": total_members,
             "online_members": online_members,
             "messages_per_hour": self.messages_per_hour,
-            "timestamp": datetime.now().isoformat()
+            "timestamp": datetime.now().isoformat(),
         }
 
     def save_stats_to_file(self, stats):
-        stats_file = os.path.join(self.statistics_folder, 'server_stats.json')
+        stats_file = os.path.join(self.statistics_folder, "server_stats.json")
 
         # Initialize data structure
         data = {"stats": []}
@@ -267,12 +299,18 @@ class StatsBot(discord.Client):
         # Load existing data if file exists and is valid JSON
         if os.path.exists(stats_file):
             try:
-                with open(stats_file, 'r') as f:
+                with open(stats_file, "r") as f:
                     file_data = json.load(f)
                     # Ensure the data has the expected structure
-                    if isinstance(file_data, dict) and 'stats' in file_data and isinstance(file_data['stats'], list):
+                    if (
+                        isinstance(file_data, dict)
+                        and "stats" in file_data
+                        and isinstance(file_data["stats"], list)
+                    ):
                         data = file_data
-                        print(f"Loaded existing stats file with {len(data['stats'])} entries")
+                        print(
+                            f"Loaded existing stats file with {len(data['stats'])} entries"
+                        )
                     else:
                         print("Warning: Invalid JSON structure, resetting data")
             except (json.JSONDecodeError, KeyError) as e:
@@ -287,9 +325,11 @@ class StatsBot(discord.Client):
 
         # Save to file with error handling
         try:
-            with open(stats_file, 'w') as f:
+            with open(stats_file, "w") as f:
                 json.dump(data, f, indent=2)
-            print(f"Successfully saved stats to file (total entries: {len(data['stats'])})")
+            print(
+                f"Successfully saved stats to file (total entries: {len(data['stats'])})"
+            )
             return True
         except Exception as e:
             print(f"Error saving stats file: {e}")
@@ -300,15 +340,17 @@ class StatsBot(discord.Client):
             print("Syncing with remote repository...")
 
             # Fetch the latest changes
-            await self.run_git_command(['fetch', 'origin'], check=False)
+            await self.run_git_command(["fetch", "origin"], check=False)
 
             # Try to pull with rebase first
-            stdout, stderr = await self.run_git_command(['pull', '--rebase', 'origin', 'main'], check=False)
+            stdout, stderr = await self.run_git_command(
+                ["pull", "--rebase", "origin", "main"], check=False
+            )
 
             if "CONFLICT" in stdout or "CONFLICT" in stderr:
                 print("Merge conflict detected. Resetting and forcing our changes...")
                 # If there's a conflict, reset and force push
-                await self.run_git_command(['reset', '--hard', 'HEAD'], check=False)
+                await self.run_git_command(["reset", "--hard", "HEAD"], check=False)
                 return False
             elif "fatal:" in stderr or "error:" in stderr:
                 print(f"Pull failed: {stderr}")
@@ -333,10 +375,12 @@ class StatsBot(discord.Client):
                 # If sync fails, we'll try to force push our changes
 
             # Add all files in statistics folder to git
-            await self.run_git_command(['add', 'statistics/'])
+            await self.run_git_command(["add", "statistics/"])
 
             # Check if there are changes to commit
-            stdout, stderr = await self.run_git_command(['status', '--porcelain'], check=False)
+            stdout, stderr = await self.run_git_command(
+                ["status", "--porcelain"], check=False
+            )
 
             if not stdout.strip():
                 print("No changes to commit")
@@ -344,20 +388,24 @@ class StatsBot(discord.Client):
 
             # Commit changes
             commit_message = f"Update server stats - {datetime.now().isoformat()}"
-            await self.run_git_command(['commit', '-m', commit_message])
+            await self.run_git_command(["commit", "-m", commit_message])
 
             print("Committed changes successfully")
 
             # Push changes to main branch with timeout
             try:
                 # Try normal push first
-                push_task = self.run_git_command(['push', 'origin', 'main'], check=False)
+                push_task = self.run_git_command(
+                    ["push", "origin", "main"], check=False
+                )
                 stdout, stderr = await asyncio.wait_for(push_task, timeout=30.0)
 
                 if "rejected" in stderr:
                     print("Push rejected, trying force push...")
                     # If push is rejected, try force push
-                    push_task = self.run_git_command(['push', '--force', 'origin', 'main'], check=False)
+                    push_task = self.run_git_command(
+                        ["push", "--force", "origin", "main"], check=False
+                    )
                     stdout, stderr = await asyncio.wait_for(push_task, timeout=30.0)
 
                     if "fatal:" in stderr or "error:" in stderr:
@@ -379,7 +427,7 @@ class StatsBot(discord.Client):
 
         except subprocess.CalledProcessError as e:
             print(f"Git error: {e}")
-            if hasattr(e, 'stderr') and e.stderr:
+            if hasattr(e, "stderr") and e.stderr:
                 print(f"Git stderr: {e.stderr}")
             return False
         except Exception as e:
@@ -417,7 +465,7 @@ class StatsBot(discord.Client):
 
 # Create and run the bot
 if __name__ == "__main__":
-    token = os.getenv('DISCORD_TOKEN')
+    token = os.getenv("DISCORD_TOKEN")
 
     if not token:
         print("Error: DISCORD_TOKEN not found in environment variables")
