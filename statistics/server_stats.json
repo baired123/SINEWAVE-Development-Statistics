@@ -1733,6 +1733,12 @@
       "online_members": 34,
       "messages_per_hour": 3,
       "timestamp": "2025-09-27T15:05:02.413566"
+    },
+    {
+      "total_members": 216,
+      "online_members": 37,
+      "messages_per_hour": 3,
+      "timestamp": "2025-09-27T15:10:02.413685"
     }
   ]
 }
