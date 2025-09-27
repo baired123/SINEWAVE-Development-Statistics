@@ -809,6 +809,12 @@
       "online_members": 22,
       "messages_per_hour": 2,
       "timestamp": "2025-09-27T02:15:02.418070"
+    },
+    {
+      "total_members": 215,
+      "online_members": 24,
+      "messages_per_hour": 2,
+      "timestamp": "2025-09-27T02:20:02.421576"
     }
   ]
 }
