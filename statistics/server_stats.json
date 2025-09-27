@@ -1613,6 +1613,12 @@
       "online_members": 29,
       "messages_per_hour": 3,
       "timestamp": "2025-09-27T13:25:02.422205"
+    },
+    {
+      "total_members": 216,
+      "online_members": 32,
+      "messages_per_hour": 3,
+      "timestamp": "2025-09-27T13:30:02.413815"
     }
   ]
 }
