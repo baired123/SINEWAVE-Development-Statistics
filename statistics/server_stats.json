@@ -2009,6 +2009,12 @@
       "online_members": 30,
       "messages_per_hour": 3,
       "timestamp": "2025-09-27T18:55:02.423347"
+    },
+    {
+      "total_members": 216,
+      "online_members": 24,
+      "messages_per_hour": 3,
+      "timestamp": "2025-09-27T19:00:02.429996"
     }
   ]
 }
