@@ -1967,6 +1967,12 @@
       "online_members": 28,
       "messages_per_hour": 3,
       "timestamp": "2025-09-27T18:20:02.418940"
+    },
+    {
+      "total_members": 216,
+      "online_members": 27,
+      "messages_per_hour": 3,
+      "timestamp": "2025-09-27T18:25:02.414349"
     }
   ]
 }
