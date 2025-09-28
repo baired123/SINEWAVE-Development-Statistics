@@ -3083,6 +3083,12 @@
       "online_members": 43,
       "messages_per_hour": 3,
       "timestamp": "2025-09-28T09:50:02.422872"
+    },
+    {
+      "total_members": 216,
+      "online_members": 39,
+      "messages_per_hour": 3,
+      "timestamp": "2025-09-28T09:55:02.418283"
     }
   ]
 }
