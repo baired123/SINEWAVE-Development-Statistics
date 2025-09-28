@@ -1955,6 +1955,12 @@
       "online_members": 30,
       "messages_per_hour": 3,
       "timestamp": "2025-09-27T18:10:02.421767"
+    },
+    {
+      "total_members": 216,
+      "online_members": 30,
+      "messages_per_hour": 3,
+      "timestamp": "2025-09-27T18:15:02.419442"
     }
   ]
 }
