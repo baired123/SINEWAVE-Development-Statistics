@@ -3053,6 +3053,12 @@
       "online_members": 41,
       "messages_per_hour": 3,
       "timestamp": "2025-09-28T09:25:02.413923"
+    },
+    {
+      "total_members": 216,
+      "online_members": 40,
+      "messages_per_hour": 3,
+      "timestamp": "2025-09-28T09:30:02.413876"
     }
   ]
 }
