@@ -5093,6 +5093,12 @@
       "online_members": 35,
       "messages_per_hour": 3,
       "timestamp": "2025-09-29T13:45:02.419838"
+    },
+    {
+      "total_members": 216,
+      "online_members": 33,
+      "messages_per_hour": 3,
+      "timestamp": "2025-09-29T13:50:02.421658"
     }
   ]
 }
