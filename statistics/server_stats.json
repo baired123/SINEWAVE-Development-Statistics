@@ -3713,6 +3713,12 @@
       "online_members": 30,
       "messages_per_hour": 5,
       "timestamp": "2025-09-28T18:35:02.418011"
+    },
+    {
+      "total_members": 218,
+      "online_members": 23,
+      "messages_per_hour": 6,
+      "timestamp": "2025-09-28T18:40:02.415346"
     }
   ]
 }
