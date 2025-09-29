@@ -4703,6 +4703,12 @@
       "online_members": 27,
       "messages_per_hour": 1,
       "timestamp": "2025-09-29T08:20:02.426482"
+    },
+    {
+      "total_members": 217,
+      "online_members": 28,
+      "messages_per_hour": 1,
+      "timestamp": "2025-09-29T08:25:02.413792"
     }
   ]
 }
