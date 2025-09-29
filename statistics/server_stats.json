@@ -3773,6 +3773,12 @@
       "online_members": 23,
       "messages_per_hour": 33,
       "timestamp": "2025-09-28T19:25:02.414403"
+    },
+    {
+      "total_members": 218,
+      "online_members": 27,
+      "messages_per_hour": 35,
+      "timestamp": "2025-09-28T19:30:02.413726"
     }
   ]
 }
