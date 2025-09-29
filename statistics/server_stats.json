@@ -5183,6 +5183,12 @@
       "online_members": 31,
       "messages_per_hour": 1,
       "timestamp": "2025-09-29T15:00:02.414322"
+    },
+    {
+      "total_members": 216,
+      "online_members": 31,
+      "messages_per_hour": 1,
+      "timestamp": "2025-09-29T15:05:02.414087"
     }
   ]
 }
