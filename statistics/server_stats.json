@@ -6623,6 +6623,12 @@
       "online_members": 33,
       "messages_per_hour": 67,
       "timestamp": "2025-09-30T11:00:02.415508"
+    },
+    {
+      "total_members": 216,
+      "online_members": 35,
+      "messages_per_hour": 3,
+      "timestamp": "2025-09-30T11:05:02.416011"
     }
   ]
 }
