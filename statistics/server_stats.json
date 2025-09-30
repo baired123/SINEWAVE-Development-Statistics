@@ -6353,6 +6353,12 @@
       "online_members": 31,
       "messages_per_hour": 11,
       "timestamp": "2025-09-30T07:15:02.422026"
+    },
+    {
+      "total_members": 216,
+      "online_members": 35,
+      "messages_per_hour": 6,
+      "timestamp": "2025-09-30T07:20:02.413210"
     }
   ]
 }
