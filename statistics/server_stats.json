@@ -5729,6 +5729,12 @@
       "online_members": 17,
       "messages_per_hour": 3,
       "timestamp": "2025-09-29T22:35:02.414041"
+    },
+    {
+      "total_members": 216,
+      "online_members": 16,
+      "messages_per_hour": 3,
+      "timestamp": "2025-09-29T22:40:02.415537"
     }
   ]
 }
