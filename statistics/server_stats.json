@@ -7973,6 +7973,12 @@
       "online_members": 23,
       "messages_per_hour": 20,
       "timestamp": "2025-10-01T05:45:02.430736"
+    },
+    {
+      "total_members": 216,
+      "online_members": 24,
+      "messages_per_hour": 20,
+      "timestamp": "2025-10-01T05:50:02.442023"
     }
   ]
 }
