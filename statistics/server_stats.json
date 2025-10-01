@@ -7193,6 +7193,12 @@
       "online_members": 25,
       "messages_per_hour": 90,
       "timestamp": "2025-09-30T18:55:02.418384"
+    },
+    {
+      "total_members": 216,
+      "online_members": 22,
+      "messages_per_hour": 96,
+      "timestamp": "2025-09-30T19:00:02.420673"
     }
   ]
 }
