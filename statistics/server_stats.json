@@ -8093,6 +8093,12 @@
       "online_members": 23,
       "messages_per_hour": 43,
       "timestamp": "2025-10-01T07:25:02.418427"
+    },
+    {
+      "total_members": 216,
+      "online_members": 27,
+      "messages_per_hour": 53,
+      "timestamp": "2025-10-01T07:30:02.414390"
     }
   ]
 }
