@@ -8615,6 +8615,12 @@
       "online_members": 30,
       "messages_per_hour": 24,
       "timestamp": "2025-10-01T14:40:02.421918"
+    },
+    {
+      "total_members": 216,
+      "online_members": 28,
+      "messages_per_hour": 24,
+      "timestamp": "2025-10-01T14:45:02.418085"
     }
   ]
 }
