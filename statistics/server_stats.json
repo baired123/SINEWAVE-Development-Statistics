@@ -8273,6 +8273,12 @@
       "online_members": 34,
       "messages_per_hour": 1,
       "timestamp": "2025-10-01T09:55:02.430787"
+    },
+    {
+      "total_members": 216,
+      "online_members": 33,
+      "messages_per_hour": 1,
+      "timestamp": "2025-10-01T10:00:02.415316"
     }
   ]
 }
