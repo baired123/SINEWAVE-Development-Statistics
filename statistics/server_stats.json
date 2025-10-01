@@ -8123,6 +8123,12 @@
       "online_members": 24,
       "messages_per_hour": 67,
       "timestamp": "2025-10-01T07:50:02.420499"
+    },
+    {
+      "total_members": 216,
+      "online_members": 23,
+      "messages_per_hour": 70,
+      "timestamp": "2025-10-01T07:55:02.430209"
     }
   ]
 }
