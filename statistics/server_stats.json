@@ -8003,6 +8003,12 @@
       "online_members": 24,
       "messages_per_hour": 2,
       "timestamp": "2025-10-01T06:10:02.415439"
+    },
+    {
+      "total_members": 216,
+      "online_members": 27,
+      "messages_per_hour": 2,
+      "timestamp": "2025-10-01T06:15:02.414994"
     }
   ]
 }
