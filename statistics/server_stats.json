@@ -8099,6 +8099,12 @@
       "online_members": 27,
       "messages_per_hour": 53,
       "timestamp": "2025-10-01T07:30:02.414390"
+    },
+    {
+      "total_members": 216,
+      "online_members": 25,
+      "messages_per_hour": 55,
+      "timestamp": "2025-10-01T07:35:02.428931"
     }
   ]
 }
