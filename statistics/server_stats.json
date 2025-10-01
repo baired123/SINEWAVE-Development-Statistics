@@ -8771,6 +8771,12 @@
       "online_members": 27,
       "messages_per_hour": 33,
       "timestamp": "2025-10-01T16:50:02.422227"
+    },
+    {
+      "total_members": 216,
+      "online_members": 25,
+      "messages_per_hour": 36,
+      "timestamp": "2025-10-01T16:55:02.413808"
     }
   ]
 }
