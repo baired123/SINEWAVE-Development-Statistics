@@ -8663,6 +8663,12 @@
       "online_members": 25,
       "messages_per_hour": 24,
       "timestamp": "2025-10-01T15:20:02.414362"
+    },
+    {
+      "total_members": 216,
+      "online_members": 21,
+      "messages_per_hour": 26,
+      "timestamp": "2025-10-01T15:25:02.414757"
     }
   ]
 }
