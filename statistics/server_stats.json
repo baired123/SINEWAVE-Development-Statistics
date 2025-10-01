@@ -8483,6 +8483,12 @@
       "online_members": 34,
       "messages_per_hour": 18,
       "timestamp": "2025-10-01T12:50:02.415931"
+    },
+    {
+      "total_members": 216,
+      "online_members": 33,
+      "messages_per_hour": 19,
+      "timestamp": "2025-10-01T12:55:02.427203"
     }
   ]
 }
