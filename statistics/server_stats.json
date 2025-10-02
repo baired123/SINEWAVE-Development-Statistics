@@ -10301,6 +10301,12 @@
       "online_members": 31,
       "messages_per_hour": 4,
       "timestamp": "2025-10-02T14:05:02.413048"
+    },
+    {
+      "total_members": 217,
+      "online_members": 28,
+      "messages_per_hour": 11,
+      "timestamp": "2025-10-02T14:10:02.413429"
     }
   ]
 }
