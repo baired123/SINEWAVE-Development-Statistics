@@ -9719,6 +9719,12 @@
       "online_members": 27,
       "messages_per_hour": 31,
       "timestamp": "2025-10-02T06:00:02.450863"
+    },
+    {
+      "total_members": 216,
+      "online_members": 33,
+      "messages_per_hour": 4,
+      "timestamp": "2025-10-02T06:05:02.422398"
     }
   ]
 }
