@@ -9983,6 +9983,12 @@
       "online_members": 31,
       "messages_per_hour": 3,
       "timestamp": "2025-10-02T09:40:02.415688"
+    },
+    {
+      "total_members": 217,
+      "online_members": 35,
+      "messages_per_hour": 4,
+      "timestamp": "2025-10-02T09:45:02.414432"
     }
   ]
 }
