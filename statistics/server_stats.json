@@ -9065,6 +9065,12 @@
       "online_members": 24,
       "messages_per_hour": 5,
       "timestamp": "2025-10-01T20:55:02.434279"
+    },
+    {
+      "total_members": 216,
+      "online_members": 25,
+      "messages_per_hour": 5,
+      "timestamp": "2025-10-01T21:00:02.426806"
     }
   ]
 }
