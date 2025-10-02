@@ -8963,6 +8963,12 @@
       "online_members": 23,
       "messages_per_hour": 5,
       "timestamp": "2025-10-01T19:30:02.433689"
+    },
+    {
+      "total_members": 216,
+      "online_members": 25,
+      "messages_per_hour": 5,
+      "timestamp": "2025-10-01T19:35:02.438032"
     }
   ]
 }
