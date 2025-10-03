@@ -11885,6 +11885,12 @@
       "online_members": 38,
       "messages_per_hour": 6,
       "timestamp": "2025-10-03T12:05:02.413796"
+    },
+    {
+      "total_members": 216,
+      "online_members": 35,
+      "messages_per_hour": 16,
+      "timestamp": "2025-10-03T12:10:02.414194"
     }
   ]
 }
