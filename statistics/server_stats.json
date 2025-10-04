@@ -4,12 +4,6 @@
       "total_members": 216,
       "online_members": 34,
       "messages_per_hour": 3,
-      "timestamp": "2025-09-27T15:00:02.413930"
-    },
-    {
-      "total_members": 216,
-      "online_members": 34,
-      "messages_per_hour": 3,
       "timestamp": "2025-09-27T15:05:02.413566"
     },
     {
@@ -12095,6 +12089,12 @@
       "online_members": 33,
       "messages_per_hour": 8,
       "timestamp": "2025-10-04T14:55:02.433957"
+    },
+    {
+      "total_members": 216,
+      "online_members": 32,
+      "messages_per_hour": 8,
+      "timestamp": "2025-10-04T15:00:02.419989"
     }
   ]
 }
