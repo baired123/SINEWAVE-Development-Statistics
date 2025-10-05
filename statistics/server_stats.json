@@ -2,12 +2,6 @@
   "stats": [
     {
       "total_members": 216,
-      "online_members": 36,
-      "messages_per_hour": 4,
-      "timestamp": "2025-09-28T07:25:02.413785"
-    },
-    {
-      "total_members": 216,
       "online_members": 41,
       "messages_per_hour": 4,
       "timestamp": "2025-09-28T07:30:02.426116"
@@ -12095,6 +12089,12 @@
       "online_members": 32,
       "messages_per_hour": 2,
       "timestamp": "2025-10-05T07:20:02.414653"
+    },
+    {
+      "total_members": 216,
+      "online_members": 31,
+      "messages_per_hour": 6,
+      "timestamp": "2025-10-05T07:25:02.446457"
     }
   ]
 }
