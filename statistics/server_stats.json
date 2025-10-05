@@ -4,18 +4,6 @@
       "total_members": 218,
       "online_members": 27,
       "messages_per_hour": 20,
-      "timestamp": "2025-09-28T16:15:02.436080"
-    },
-    {
-      "total_members": 218,
-      "online_members": 27,
-      "messages_per_hour": 20,
-      "timestamp": "2025-09-28T16:20:02.423732"
-    },
-    {
-      "total_members": 218,
-      "online_members": 27,
-      "messages_per_hour": 20,
       "timestamp": "2025-09-28T16:25:02.416131"
     },
     {
@@ -12095,6 +12083,18 @@
       "online_members": 30,
       "messages_per_hour": 8,
       "timestamp": "2025-10-05T16:10:02.445381"
+    },
+    {
+      "total_members": 216,
+      "online_members": 30,
+      "messages_per_hour": 8,
+      "timestamp": "2025-10-05T16:15:02.425969"
+    },
+    {
+      "total_members": 216,
+      "online_members": 29,
+      "messages_per_hour": 8,
+      "timestamp": "2025-10-05T16:20:02.424229"
     }
   ]
 }
