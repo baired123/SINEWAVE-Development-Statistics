@@ -2,18 +2,6 @@
   "stats": [
     {
       "total_members": 218,
-      "online_members": 26,
-      "messages_per_hour": 20,
-      "timestamp": "2025-09-28T15:55:02.439107"
-    },
-    {
-      "total_members": 218,
-      "online_members": 26,
-      "messages_per_hour": 20,
-      "timestamp": "2025-09-28T16:00:02.414014"
-    },
-    {
-      "total_members": 218,
       "online_members": 28,
       "messages_per_hour": 20,
       "timestamp": "2025-09-28T16:05:02.414935"
@@ -12095,6 +12083,18 @@
       "online_members": 28,
       "messages_per_hour": 8,
       "timestamp": "2025-10-05T15:50:02.644478"
+    },
+    {
+      "total_members": 216,
+      "online_members": 25,
+      "messages_per_hour": 8,
+      "timestamp": "2025-10-05T15:55:02.515668"
+    },
+    {
+      "total_members": 216,
+      "online_members": 28,
+      "messages_per_hour": 8,
+      "timestamp": "2025-10-05T16:00:02.433346"
     }
   ]
 }
